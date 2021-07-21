@@ -1,0 +1,52 @@
+<main>
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      <div class="col-md-3">
+          <h2>User info</h2>
+           <%= attachment_image_tag @books.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
+           <table class="table">
+                <tbody>
+                    <tr>
+                      <th>name</th>
+                      <th><%= @books.user.name %></th>
+                    </tr>
+                    <tr>
+                       <th>introduction</th>
+                       <th><%= @books.user.introduction %></th>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row">
+              <% if current_user.id == @books.user_id %>
+                <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_6273" do %>
+                <i class="fas fa-user-cog"></i>
+                <% end %>
+              <% else %>
+                <%= link_to edit_user_path(@books.user.id), class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_6273" do %>
+                <i class="fas fa-user-cog"></i>
+                <% end %>
+              <% end %>
+            </div>
+      <%= render 'books/list', book: @book %>
+      <div class="col-md-8 offset-md-1">
+        <h2>Book detail</h2>
+          <table class="table">
+            <tbody>
+              <tr>
+                <td><%= attachment_image_tag @books.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %><br>
+                <%=link_to @books.user.name, user_path(@books.user_id) %>
+                </td>
+                <td><%=link_to @books.title, book_path(@books.id) %></td>
+                <td><%= @books.body %></td>
+                <% if current_user.id == @books.user_id %>
+                  <td><%= link_to "Edit", edit_book_path, class: "btn btn-sm btn-success" %></td>
+                  <td><%= link_to "Destroy", book_path, class: "btn btn-sm btn-danger", method: :delete %></td>
+                <% end %>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
