@@ -12,14 +12,14 @@ class BooksController < ApplicationController
       redirect_to "/books/#{@book.id}"
     else
       @books = Book.all
-      redirect_to request.referer
+      render :index
     end
   end
   
   def show
     @books = Book.find(params[:id])
     @book = Book.new
-    @book_comment = BookComment.new
+    @book_comment = BookComment
   end
   
   def edit
