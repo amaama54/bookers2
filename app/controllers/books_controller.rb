@@ -12,7 +12,7 @@ class BooksController < ApplicationController
       redirect_to "/books/#{@book.id}"
     else
       @books = Book.all
-      render :index
+      redirect_to request.referer
     end
   end
   
