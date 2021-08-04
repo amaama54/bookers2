@@ -1,0 +1,35 @@
+<table class="table">
+    <tbody>
+      <% if @range == "User" %>
+        <h2>Usrs search for "<%= params[:word] %>"</h2>
+        <thead>
+          <tr>
+              <th>image</th>
+              <th>name</th>
+          </tr>
+        </thead>
+        <% @users.each do |user| %>
+          <tr>
+              <td><%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %></td>
+              <td><%= user.name %></td>
+          </tr>
+        <% end %>
+      <% else %>
+        <h2>Books search for "<%= params[:word] %>"</h2>
+        <thead>
+          <tr>
+              <th></th>
+              <th>Title</th>
+              <th>Opinion</th>
+          </tr>
+        </thead>
+        <% @books.each do |book| %>
+          <tr>
+              <td><%= attachment_image_tag book.user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %></td>
+              <td><%= link_to book.title, book_path(book) %></td>
+              <td><%= book.body %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+</table>
