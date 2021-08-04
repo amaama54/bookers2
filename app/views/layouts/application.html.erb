@@ -66,7 +66,8 @@
         </div>
       </nav>
     </header>
-    <div class="search">
+    <% if user_signed_in? %>
+      <div class="search">
         <%= form_with url: search_path, method: :get, local: :true do |f| %>
           <%= f.text_field :word %>
           <%= f.select :range, options_for_select([["User"], ["Book"]]) %>
@@ -74,6 +75,7 @@
           <%= f.submit "検索" %>
         <% end %>
       </div>
+      <% end %>
     <%= render "layouts/flash" %>
     <%= yield %>
     
