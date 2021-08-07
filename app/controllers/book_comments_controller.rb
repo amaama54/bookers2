@@ -6,8 +6,6 @@ class BookCommentsController < ApplicationController
     @book_comment.book_id = @book.id
     @book_comment.user_id = current_user.id
     if @book_comment.save
-      redirect_to book_path(@book.id)
-    else
       redirect_to request.referer
     end
   end
