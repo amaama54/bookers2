@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root "homes#top"
   get "home/about" => "homes#about"
+  get "home/index" => "homes#index"
   resources :users, only: [:index, :show, :edit, :update, :create] do
     resource :relationships, only: [:create, :destroy]
     get "followings" => "relationships#followings", as: "followings"
