@@ -59,4 +59,12 @@ document.addEventListener("turbolinks:load", function() {
     event.preventDefault();
   });
   
+  /*ハンバーガーメニュー*/
+  $(function() {
+  $('.navbar-toggler-icon').on('click', function(event) {
+    $(this).toggleClass('active');
+    $('#sp-menu').fadeToggle();
+    event.preventDefault();
+  });
+});
 });
