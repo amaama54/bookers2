@@ -63,7 +63,7 @@ document.addEventListener("turbolinks:load", function() {
   $(function() {
   $('.navbar-toggler-icon').on('click', function(event) {
     $(this).toggleClass('active');
-    $('#sp-menu').fadeToggle();
+    $('#navbarNavDropdow').fadeToggle();
     event.preventDefault();
   });
 });
