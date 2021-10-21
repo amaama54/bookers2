@@ -61,9 +61,9 @@ document.addEventListener("turbolinks:load", function() {
   
   /*ハンバーガーメニュー*/
   $(function() {
-  $('.navbar-toggler-icon').on('click', function(event) {
+  $('.menu-trigger').on('click', function(event) {
     $(this).toggleClass('active');
-    $('#navbarNavDropdow').fadeToggle();
+    $('#sp-menu').fadeToggle();
     event.preventDefault();
   });
 });
